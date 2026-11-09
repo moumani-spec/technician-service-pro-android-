@@ -33,7 +33,6 @@ jobs:
           unzip -q TECHNICIAN_SERVICE_PRO_ANDROID_PROJECT.zip -d workspace
           echo "PROJECT_DIR=$GITHUB_WORKSPACE/workspace/TECHNICIAN_SERVICE_PRO_ANDROID" >> $GITHUB_ENV
 
-      
       - name: Install Android SDK packages
         run: |
           SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | sort -V | tail -n 1)
@@ -44,11 +43,6 @@ jobs:
           echo "Using $SDKMANAGER"
           yes | "$SDKMANAGER" --licenses || true
           "$SDKMANAGER" "platform-tools" "platforms;android-35" "build-tools;35.0.0"
-
-      - name: Install Android packages
-        run: |
-          yes | sdkmanager --licenses || true
-          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
       - name: Install dependencies
         working-directory: workspace/TECHNICIAN_SERVICE_PRO_ANDROID
